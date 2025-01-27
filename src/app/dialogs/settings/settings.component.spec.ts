@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SettingsComponent } from './settings.component';
+import { provideHttpClient } from '@angular/common/http';
+import { provideMarkdown } from 'ngx-markdown';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;
@@ -8,7 +11,8 @@ describe('SettingsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SettingsComponent]
+      imports: [SettingsComponent],
+      providers: [provideHttpClient(), provideMarkdown(), DynamicDialogRef]
     })
     .compileComponents();
 

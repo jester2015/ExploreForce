@@ -20,11 +20,12 @@ import { MessageService } from 'primeng/api';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  title = 'sf-recipe-documenter';
   constructor(private readonly salesforceService: SalesforceService, private readonly recipeParserService: RecipeParserService, private readonly markDownService: MarkdownService,
     appStorageService : AppStorageService
   ) {}
 
-  title = 'sf-recipe-documenter';
+
   ngOnInit() {
      
 
