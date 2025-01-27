@@ -28,7 +28,8 @@ import { ButtonModule } from 'primeng/button';
 import { FileService } from '../services/file.service';
 import { DashboardParserService } from '../services/dashboard-parser.service';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import '../string-functions';
+import { StringFunctions } from '../string-functions';
+
 
 @Component({
   selector: 'app-home',
@@ -64,7 +65,8 @@ export class HomeComponent {
     private readonly dashboardParserService: DashboardParserService,
     private readonly dialogService: DialogService,
     private readonly confirmationService: ConfirmationService,
-    private readonly fileService: FileService
+    private readonly fileService: FileService,
+    private readonly stringFunctions: StringFunctions
   ) {
     this.items = [
       { label: 'Load Last Recipe', command: () => this.loadLastRecipe() },
@@ -128,6 +130,7 @@ export class HomeComponent {
     this.recipeSelectList = [];
     this.selectedRecipe = { id: '', label: '' };
     this.jsonRecipe = '';
+
     this.settingsService.reportObject = this.value;
     if (this.currentIsRecipes()) {
       this.getListofRecipes();
@@ -137,7 +140,7 @@ export class HomeComponent {
     this.messageService.add({
       severity: 'info',
       summary: 'Info',
-      detail: 'Loading ' + this.value.capitalizeFirst() + '(s)',
+      detail: 'Loading ' + this.stringFunctions.capitalizeFirstLetter(this.value) + 's',
       life: 3000,
     });
   }

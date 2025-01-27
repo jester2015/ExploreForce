@@ -24,6 +24,7 @@ export class AppComponent {
     appStorageService : AppStorageService
   ) {}
 
+  title = 'sf-recipe-documenter';
   ngOnInit() {
      
 
