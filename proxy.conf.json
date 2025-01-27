@@ -1,0 +1,8 @@
+{
+    "/services": {
+      "target": "https://anc30194744com.my.salesforce.com",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }

@@ -1,0 +1,37 @@
+<div class="flex flex-col items-center justify-center h-screen w-screen gap-7">
+
+  <div>
+    <p-autoComplete
+      [minLength]="1"
+      [(ngModel)]="selectedRecipe"
+      [suggestions]="recipeSelectList"
+      emptySelectionMessage="Nothing found"
+      (completeMethod)="searchRecipes($event)"
+      (onSelect)="selectRecipe($event)"
+      class="w-72"
+      placeholder="Select an Option"
+      [dropdown]="true"
+    ></p-autoComplete>
+  </div>
+
+  <div class="flex flex-col items-center justify-center gap-5 h-2/3 w-3/4 relative">
+    <div
+      class="w-full h-full bg-gray-300 border-2 overflow-auto rounded-md shadow-md text-black p-3"
+      [innerHTML]="jsonRecipe"
+    ></div>
+    @if (loading) {
+    <div class="absolute inset-0 flex items-center justify-center bg-gray-300/70">
+     
+        <p-progress-spinner ariaLabel="loading" />
+    
+    </div>
+  }
+  </div>
+  <div class="flex flex-row gap-4">
+    <p-splitbutton label="Send to Clipboard" (onClick)="getClipboard()" [model]="items" />
+    <p-button label="Clear Config" [raised]="true" (click)="clearConfig($event)" />
+    <p-selectbutton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value" aria-labelledby="basic"  (onChange)="changeState($event)"/>
+    </div>
+</div>
+<p-confirmdialog />
+<p-toast></p-toast>

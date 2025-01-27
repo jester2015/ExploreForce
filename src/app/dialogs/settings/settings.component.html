@@ -1,0 +1,41 @@
+
+
+<div class="flex flex-col items-center justify-center h-96 w-full gap-6">
+
+    @if (!showQuickLoad) {
+        <div class="flex flex-col items-center justify-center gap-6 h-full w-full">
+        <p-floatlabel class="w-3/4" variant="in">
+            <input pInputText class="w-full" id="InputTextModulen_label" [(ngModel)] ="clientId"  autocomplete="off" />
+            <label for="in_label">Client Id</label>
+        </p-floatlabel>
+        <p-floatlabel class="w-3/4" variant="in">
+            <input pInputText class="w-full" [(ngModel)]="clientSecret" id="InputTextModulen_label"  autocomplete="off" />
+            <label for="in_label">Client Secret</label>
+        </p-floatlabel>
+        <p-floatlabel class="w-3/4" variant="in">
+            <input pInputText  class="w-full"  [(ngModel)]="instanceUrl" id="InputTextModulen_label"  autocomplete="off" />
+            <label for="in_label">Salesforce Url</label>
+        </p-floatlabel>
+    </div>
+    }
+    @else if (showQuickLoad) {
+
+
+
+
+        <ngs-code-editor class="w-3/4 h-full" [theme]="theme" [codeModel]="model" [options]="options" ></ngs-code-editor>
+
+    }
+    
+
+    @if (dialogMessage) {
+        <p-message severity="error">{{dialogMessage}}</p-message>
+    }
+    
+    <div class="flex flex-row gap-4">
+        <p-button label="Save" [raised]="true" severity="secondary" (click)="tryConnection()"/>
+        <p-button label="Close" [raised]="true" (click)="ref.close()" />
+        <p-button label="Quick Load" [raised]="true" (click)="quickLoad()" />
+
+    </div>
+</div>
